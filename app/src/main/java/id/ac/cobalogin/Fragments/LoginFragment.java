@@ -1,6 +1,7 @@
 package id.ac.cobalogin.Fragments;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
@@ -30,6 +31,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import id.ac.cobalogin.Constant;
+import id.ac.cobalogin.DashboardActivity;
 import id.ac.cobalogin.R;
 
 public class LoginFragment extends Fragment {
@@ -128,6 +130,7 @@ public class LoginFragment extends Fragment {
                     editor.apply();
                     //if successs
                     Toast.makeText(getContext(),"Login Success",Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getContext(), DashboardActivity.class));
                 }
             } catch (JSONException e){
                 e.printStackTrace();

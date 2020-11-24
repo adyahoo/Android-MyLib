@@ -14,16 +14,24 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Welcome"/>
+            android:text="Welcome to dashboard"/>
+
+        <TextView
+            android:id="@+id/loggedUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Username"
+            tools:text="Username"/>
 
     </LinearLayout>
+
     <Button
-        android:id="@+id/button_toLogin"
+        android:id="@+id/button_LogOut"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="60dp"
-        android:text="Login"/>
+        android:text="Log Out"/>
+
 
 </RelativeLayout>
 
