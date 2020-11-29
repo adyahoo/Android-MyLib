@@ -1,5 +1,6 @@
 package id.ac.cobalogin;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
