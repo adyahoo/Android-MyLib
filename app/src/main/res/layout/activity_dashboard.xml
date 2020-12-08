@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background='#9aee'>
+        <TextView
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="150dp"
+            android:id="@+id/welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My dashboard"
+            android:textSize="80px"/>
+
+        <TextView
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_below="@+id/welcome"
+            android:id="@+id/loggedUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username"
+            tools:text="Username"/>
+
+        <LinearLayout
+            android:layout_below="@+id/loggedUser"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_marginBottom="10dp"
+                android:textSize="10dp"
+                android:background="#fff"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:layout_marginLeft="15dp"
+                android:id="@+id/SearchBook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Search In Library" />
+
+            <Button
+                android:layout_marginBottom="10dp"
+                android:textSize="10dp"
+                android:background="#fff"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:layout_marginLeft="15dp"
+                android:id="@+id/CreateBook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Store your book" />
+
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/welcome"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:elevation="12dp"
+            android:id="@+id/view2"
+            app:cardCornerRadius="40dp"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="50dp"
+                android:layout_height="70dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/pp" />
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recycler_view"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        tools:listitem="@layout/list_data_main"
+        android:orientation="vertical"
+        tools:itemCount="8">
+
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <Button
+        android:layout_margin="10dp"
+        android:id="@+id/btnLogOut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Log Out"/>
+
+
+</LinearLayout>
+
