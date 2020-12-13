@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +14,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,11 +24,13 @@ import java.util.Map;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DashboardActivity extends AppCompatActivity {
-    private Button btnLogout;
+    private Button btnLogout, btnStore, btnSearch;
     private ProgressDialog dialog;
     private SharedPreferences sharedPreferences;
+    private CircleImageView imgProfile;
 
 
 
@@ -38,14 +40,33 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
         sharedPreferences = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
         String name = sharedPreferences.getString("name","");
+        String lastName = sharedPreferences.getString("lastname","");
+        String photo = sharedPreferences.getString("photo","");
         TextView user = findViewById(R.id.loggedUser);
-        user.setText(name);
+        user.setText(name+" "+lastName);
+
+        imgProfile = findViewById(R.id.imgUserDashboard);
+        if(photo.equals("null")){
+            Picasso.get().load(Constant.URL+"storage/"+"user.jpg").into(imgProfile);
+        }else{
+            Picasso.get().load(Constant.URL+"storage/profiles/"+photo).into(imgProfile);
+        }
+
 
         dialog = new ProgressDialog(getBaseContext());
         dialog.setCancelable(false);
         btnLogout = findViewById(R.id.btnLogOut);
         btnLogout.setOnClickListener(v->{
             logout();
+        });
+
+        imgProfile.setOnClickListener(v -> {
+            startActivity(new Intent(DashboardActivity.this, EditUserInfoActivity.class));
+        });
+
+        btnStore = findViewById(R.id.btnStoreBook);
+        btnStore.setOnClickListener(v -> {
+            startActivity(new Intent(DashboardActivity.this, StoreBookActivity.class));
         });
     }
 

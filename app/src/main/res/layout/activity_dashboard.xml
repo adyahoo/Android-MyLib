@@ -13,7 +13,7 @@
         android:background='#9aee'>
         <TextView
             android:layout_marginLeft="15dp"
-            android:layout_marginRight="150dp"
+            android:layout_marginRight="80dp"
             android:id="@+id/welcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
                 android:paddingLeft="3dp"
                 android:paddingRight="3dp"
                 android:layout_marginLeft="15dp"
-                android:id="@+id/SearchBook"
+                android:id="@+id/btnSearchBook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Search In Library" />
@@ -55,30 +55,21 @@
                 android:paddingLeft="3dp"
                 android:paddingRight="3dp"
                 android:layout_marginLeft="15dp"
-                android:id="@+id/CreateBook"
+                android:id="@+id/btnStoreBook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Store your book" />
 
         </LinearLayout>
 
-        <androidx.cardview.widget.CardView
-            android:layout_marginTop="20dp"
-            android:layout_toRightOf="@+id/welcome"
+        <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:elevation="12dp"
-            android:id="@+id/view2"
-            app:cardCornerRadius="40dp"
-            android:layout_centerHorizontal="true">
-
-            <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="50dp"
-                android:layout_height="70dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/pp" />
-        </androidx.cardview.widget.CardView>
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:src="@color/colorGrey"
+            android:layout_toRightOf="@id/welcome"
+            android:id="@+id/imgUserDashboard"/>
 
     </RelativeLayout>
     <androidx.recyclerview.widget.RecyclerView

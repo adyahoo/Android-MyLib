@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.content.Intent;
+import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,16 +14,25 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
         SharedPreferences userPref = getApplicationContext().getSharedPreferences("user", MODE_PRIVATE);
         boolean isLoggedIn = userPref.getBoolean("isLoggedIn", false);
 
-        if(isLoggedIn){
-            startActivity(new Intent(getBaseContext(), DashboardActivity.class));
-            finish();
-        }else{
-            startActivity(new Intent(getBaseContext(), AuthActivity.class));
-        }
+        //execute anything in run method after 1,5 sec
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(isLoggedIn){
+                    startActivity(new Intent(getBaseContext(), DashboardActivity.class));
+                    finish();
+                }else{
+                    startActivity(new Intent(getBaseContext(), AuthActivity.class));
+                }
+            }
+        }, 1500);
+
 
 //        setContentView(R.layout.activity_main);
 
