@@ -72,27 +72,41 @@
             android:id="@+id/imgUserDashboard"/>
 
     </RelativeLayout>
-    <androidx.recyclerview.widget.RecyclerView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/recycler_view"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="5dp"
-        tools:listitem="@layout/list_data_main"
-        android:orientation="vertical"
-        tools:itemCount="8">
+        android:orientation="vertical">
 
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeMain_Book"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView_book"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="vertical"
+                tools:itemCount="8"
+                tools:listitem="@layout/layout_book_main">
 
-    </androidx.recyclerview.widget.RecyclerView>
+            </androidx.recyclerview.widget.RecyclerView>
 
-    <Button
-        android:layout_margin="10dp"
-        android:id="@+id/btnLogOut"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="Log Out"/>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <Button
+            android:layout_margin="10dp"
+            android:id="@+id/btnLogOut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="Log Out"/>
+
+    </LinearLayout>
 
 
 </LinearLayout>

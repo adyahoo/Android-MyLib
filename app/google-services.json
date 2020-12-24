@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "508250582542",
+    "project_id": "mylib-5d5f7",
+    "storage_bucket": "mylib-5d5f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508250582542:android:d4c848b2d6b432880a165f",
+        "android_client_info": {
+          "package_name": "id.ac.cobalogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "508250582542-g3vch72p6a5hv1bith8gofliqpoqd9la.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4URMULzb4Go6o7KQrzizFyL14kXCgSeU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "508250582542-g3vch72p6a5hv1bith8gofliqpoqd9la.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

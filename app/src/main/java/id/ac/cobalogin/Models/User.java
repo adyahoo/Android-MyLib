@@ -2,7 +2,15 @@ package id.ac.cobalogin.Models;
 
 public class User {
     private int id;
-    private String name, photo;
+    private String name, lastname, photo;
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
 
     public int getId() {
         return id;

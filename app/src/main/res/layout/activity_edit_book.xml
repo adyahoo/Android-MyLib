@@ -14,14 +14,14 @@
         android:textSize="30dp"
         android:layout_marginBottom="30dp"
         android:gravity="center_horizontal"
-        android:text="Store Your Book"/>
+        android:text="Edit Your Book"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_gravity="center_horizontal"
         android:src="@color/colorGrey"
-        android:id="@+id/coverBook"
+        android:id="@+id/coverEditBook"
         android:layout_marginBottom="20dp"/>
 
     <TextView
@@ -29,18 +29,18 @@
         android:layout_height="wrap_content"
         android:text="Select Cover Book"
         android:gravity="center_horizontal"
-        android:id="@+id/txtSelectCover"
+        android:id="@+id/txtEditCover"
         android:textSize="16dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtLayoutTitle">
+        android:id="@+id/txtLayoutEditTitle">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/etTitle"
+            android:id="@+id/etEditTitle"
             android:hint="Title"
             android:inputType="text">
 
@@ -50,12 +50,12 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtLayoutAuthor">
+        android:id="@+id/txtLayoutEditAuthor">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/etAuthor"
+            android:id="@+id/etEditAuthor"
             android:hint="Author"
             android:inputType="text">
 
@@ -65,37 +65,37 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtLayoutDesc">
+        android:id="@+id/txtLayoutEditDesc">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/etDesc"
+            android:id="@+id/etEditDesc"
             android:hint="Description"
             android:inputType="textLongMessage">
 
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
-<!--    <com.google.android.material.textfield.TextInputLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:id="@+id/txtLayoutFilePath">-->
+    <!--    <com.google.android.material.textfield.TextInputLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:id="@+id/txtLayoutFilePath">-->
 
-<!--        <com.google.android.material.textfield.TextInputEditText-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:id="@+id/etFilePath"-->
-<!--            android:hint="File Path"-->
-<!--            android:inputType="text">-->
+    <!--        <com.google.android.material.textfield.TextInputEditText-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:id="@+id/etFilePath"-->
+    <!--            android:hint="File Path"-->
+    <!--            android:inputType="text">-->
 
-<!--        </com.google.android.material.textfield.TextInputEditText>-->
-<!--    </com.google.android.material.textfield.TextInputLayout>-->
+    <!--        </com.google.android.material.textfield.TextInputEditText>-->
+    <!--    </com.google.android.material.textfield.TextInputLayout>-->
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnSubmitStoreBook"
+        android:id="@+id/btnSubmitEditBook"
         android:textSize="20dp"
         android:hint="Submit">
     </Button>

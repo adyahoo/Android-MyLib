@@ -131,6 +131,7 @@ public class LoginFragment extends Fragment {
                     editor.putString("name",user.getString("name"));
                     editor.putString("lastname",user.getString("lastname"));
                     editor.putString("photo",user.getString("photo"));
+                    editor.putInt("id",user.getInt("id"));
                     editor.putBoolean("isLoggedIn", true);
                     editor.apply();
                     //if successs

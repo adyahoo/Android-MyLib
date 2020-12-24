@@ -11,6 +11,12 @@ public class Constant {
     public static final String REGISTER = HOME+"/register";
     public static final String SAVE_USER_INFO = HOME+"/user_info";
     public static final String LOGOUT = HOME+"/logout";
-    public static final String CREATE = HOME+"/createBook";
+
+    public static final String GET_BOOKS = HOME+"/getBook";
+    public static final String GET_ALL_BOOKS = HOME+"/getAllBooks";
+    public static final String STORE_BOOK = HOME+"/createBook";
+    public static final String EDIT_BOOK = HOME+"/editBook";
+    public static final String DELETE_BOOK = HOME+"/deleteBook";
+
 
 }
