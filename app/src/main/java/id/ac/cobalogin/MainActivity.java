@@ -1,6 +1,7 @@
 package id.ac.cobalogin;
 
 import androidx.appcompat.app.AppCompatActivity;
+import id.ac.cobalogin.Adapter.BooksAdapter;
 import id.ac.cobalogin.Fragments.LoginFragment;
 import id.ac.cobalogin.Models.Book;
 import id.ac.cobalogin.SQLite.DbHelper;
@@ -16,8 +17,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.TimeoutError;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -71,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean("isFirst", false);
             editor.apply();
-            Toast.makeText(this, "First Time", Toast.LENGTH_SHORT).show();
 
             getAllBook();
         }else{
@@ -87,9 +92,9 @@ public class MainActivity extends AppCompatActivity {
 
             try {
                 JSONObject object = new JSONObject(response);
-                if(object.getBoolean("success")){
+                if (object.getBoolean("success")) {
                     JSONArray array = new JSONArray(object.getString("book"));
-                    for(int i=0; i<array.length(); i++){
+                    for (int i = 0; i < array.length(); i++) {
                         JSONObject bookObject = array.getJSONObject(i);
 
                         Book book = new Book();
@@ -102,15 +107,21 @@ public class MainActivity extends AppCompatActivity {
                         book.setUser_id(bookObject.getInt("user_id"));
 
                         dbHelper.insertData(book);
-                        Log.d("cobafirst1_","ini get first2");
+                        Log.d("cobafirst1_", "ini get first2");
                     }
+                    Toast.makeText(this, "First Time and Fetching All Data to SQLite", Toast.LENGTH_SHORT).show();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
-                Log.d("cobafirst2_","ini get first3");
+                Log.d("cobafirst2_", "ini get first3");
             }
-        }, error -> {
-            error.printStackTrace();
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if(error instanceof NetworkError || error instanceof AuthFailureError || error instanceof NoConnectionError || error instanceof TimeoutError){
+                    Toast.makeText(getApplicationContext(), "Failed to Fetch Data from Database", Toast.LENGTH_SHORT).show();
+                }
+            }
         }){
 
             @Override

@@ -76,6 +76,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksHolder>
             i.putExtra("title", book.getTitle());
             i.putExtra("author", book.getAuthor());
             i.putExtra("desc", book.getDesc());
+            i.putExtra("cover", book.getCover());
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i);
         });

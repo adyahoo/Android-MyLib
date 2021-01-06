@@ -1,5 +1,6 @@
 package id.ac.cobalogin;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import de.hdodenhof.circleimageview.CircleImageView;
 import id.ac.cobalogin.Models.Book;
@@ -9,7 +10,10 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TabHost;
@@ -23,10 +27,13 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -69,6 +76,13 @@ public class EditBookActivity extends AppCompatActivity {
         etTitle.setText(getIntent().getStringExtra("title"));
         etAuthor.setText(getIntent().getStringExtra("author"));
         etDesc.setText(getIntent().getStringExtra("desc"));
+        String cover = getIntent().getStringExtra("cover");
+
+        if(cover.equals("null")){
+            Picasso.get().load(Constant.URL+"storage/book/"+"book.jpg").into(imgCover);
+        }else{
+            Picasso.get().load(Constant.URL+"storage/book/cover/"+cover).into(imgCover);
+        }
 
         txtCover.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_PICK);
@@ -101,6 +115,21 @@ public class EditBookActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==GALLERY_EDIT_COVER && resultCode==RESULT_OK){
+            Uri imgUri = data.getData();
+            imgCover.setImageURI(imgUri);
+
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),imgUri);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void editBookLite() {
@@ -142,7 +171,7 @@ public class EditBookActivity extends AppCompatActivity {
 //                Log.d("coba_editasasd", "editUserInfo: sukses");
                 if(object.getBoolean("success")){
 //                    Log.d("coba_editasasd", "editUserInfo: suksesedit");
-                    Toast.makeText(this, "Editing yoqur Book Success",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Editing your Book Success",Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(EditBookActivity.this, DashboardActivity.class));
                     finish();
                 }
@@ -170,6 +199,7 @@ public class EditBookActivity extends AppCompatActivity {
                 map.put("title", etTitle.getText().toString().trim());
                 map.put("author", etAuthor.getText().toString().trim());
                 map.put("description", etDesc.getText().toString().trim());
+                map.put("cover", bitmapToString(bitmap));
                 return map;
             }
         };
@@ -178,5 +208,14 @@ public class EditBookActivity extends AppCompatActivity {
         queue.add(request);
     }
 
+    private String bitmapToString(Bitmap bitmap) {
+        if(bitmap!=null){
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+            byte [] array = byteArrayOutputStream.toByteArray();
+            return Base64.encodeToString(array,Base64.DEFAULT);
+        }
+        return "";
+    }
 
 }

@@ -82,7 +82,7 @@ public class StoreBookActivity extends AppCompatActivity {
             if(validate()){
                 FirebaseMessaging.getInstance().subscribeToTopic("storing_book");
                 storeBook();
-                storeBookLite();
+//                storeBookLite();
             }
         });
     }
